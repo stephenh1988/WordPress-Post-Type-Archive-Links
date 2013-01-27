@@ -162,19 +162,19 @@ class HPTAL_MetaBox
 		);
 
 		// 'Add to Menu' button
-		$html .= sprintf(
-			 '<p class="button-controls"><span class="add-to-menu">%s</span></p>'
-			,get_submit_button(
-				 esc_attr__( 'Add to Menu' )
-				,'button-secondary submit-add-to-menu'
-				,'add-post-type-menu-item'
-				,false
-				,array(
-					# 'id'       => 'submit-post-type-archives'
-					#,'onClick'  => 'return false;'
-					#,'disabled' => disabled( $nav_menu_selected_id, 0, false )
-				 )
-			 )
+		$args = array( 'id' => 'submit-post-type-archives' );
+		if ( empty( $nav_menu_selected_id ) ) {
+			$args['disabled'] = 'disabled';
+		}
+		$html .= sprintf( 
+				'<p class="button-controls"><span class="add-to-menu">%s</span></p>',
+				get_submit_button(
+					esc_attr__( 'Add to Menu' ),
+					'secondary',
+					esc_attr__( 'add-post-type-menu-item' ),
+					false,
+					$args
+			 	)
 		);
 		print $html;
 	}
