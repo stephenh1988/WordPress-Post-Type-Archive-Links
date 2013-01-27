@@ -145,7 +145,7 @@ class HPTAL_MetaBox
 		);
 
 		// #{$metabox_id}
-		$html = "<ul id='{$metabox_id}'>";
+		$html = "<ul id='{$this->metabox_id}'>";
 		foreach ( $post_types as $pt )
 		{
 			$html .= sprintf(
