@@ -35,7 +35,11 @@ class Harris_Post_Type_Archive_Link{
           global $nav_menu_selected_id;
 
           //Get post types
-          $post_types = get_post_types(array('public'=>true,'_builtin'=>false), 'object');?>
+          $custom_post_types = get_post_types(array('public'=>true,'_builtin'=>false), 'object');
+          $builtin_post_types = get_post_types(array('public'=>true,'_builtin'=>true), 'object');
+
+          $post_types = (object) array_merge((array) $custom_post_types, (array) $builtin_post_types);
+          ?>
 
           <!-- Post type checkbox list -->
           <ul id="post-type-archive-checklist">
